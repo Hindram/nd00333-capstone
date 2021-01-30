@@ -2,16 +2,24 @@
 
 import json
 import os
-import joblib
 import pandas as pd
 import numpy as np
+import pickle
+import joblib
+import azureml.automl.core
 
 
 def init():
     global model
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.pkl')
-    model = joblib.load(model_path)
-
+    
+    try:
+        model = joblib.load(model_path)
+        logger.info("Loaded successfully...")
+    except Exception as e:
+        logging_utilities.log_traceback(e, logger)
+        raise
+     
 def run(data):
     try:      
         data = json.loads(data)['data']
@@ -19,6 +27,7 @@ def run(data):
         result = model.predict(data)
         
         return result.tolist()
+        #return json.dumps({"result": result.tolist()})
 
     except Exception as e:
         error = str(e)
