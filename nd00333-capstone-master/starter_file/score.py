@@ -1,12 +1,11 @@
 # Source: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-existing-model
-
 import json
 import os
 import pandas as pd
 import numpy as np
 import pickle
 import joblib
-import azureml.automl.core
+
 
 
 def init():
@@ -17,8 +16,8 @@ def init():
         model = joblib.load(model_path)
         logger.info("Loaded successfully...")
     except Exception as e:
-        logging_utilities.log_traceback(e, logger)
-        raise
+        error = str(e)
+        return error
      
 def run(data):
     try:      
@@ -32,3 +31,4 @@ def run(data):
     except Exception as e:
         error = str(e)
         return error
+
