@@ -26,11 +26,11 @@ def main():
     args = parser.parse_args()
     
     # split data to train and test sets
-     ds = Dataset.get_by_id(ws, id=args.data)
-	   ds = ds.to_pandas_dataframe()
-	   x = ds.drop(columns=['Overcome'])
-	   y = ds['Overcome']
-	   x_train, x_test, y_train, y_test = train_test_split(x,y)
+    dataset = Dataset.get_by_name(ws, name='diabetes_data_set')
+    dataset = dataset.to_pandas_dataframe()
+    x = dataset.drop(columns=['Overcome'])
+    y = dataset['Overcome']
+    x_train, x_test, y_train, y_test = train_test_split(x,y)
 
     run.log("Regularization Strength:", np.float(args.C))
     run.log("Max iterations:", np.int(args.max_iter))
