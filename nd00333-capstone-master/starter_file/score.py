@@ -10,7 +10,7 @@ import joblib
 
 def init():
     global model
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.pkl')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.joblib')
     
     try:
         model = joblib.load(model_path)
