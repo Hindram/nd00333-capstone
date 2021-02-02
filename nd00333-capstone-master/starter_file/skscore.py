@@ -15,7 +15,7 @@ def init():
     global model
     # Replace filename if needed.
     path = os.getenv('AZUREML_MODEL_DIR') 
-    model_path = os.path.join(path, 'skmodel.pkl')
+    model_path = os.path.join(path, 'model.joblib')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
