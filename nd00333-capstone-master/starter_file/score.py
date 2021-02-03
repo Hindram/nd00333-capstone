@@ -11,13 +11,14 @@ import joblib
 def init():
     global model
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model.joblib')
+    model = joblib.load(model_path)
     
-    try:
-        model = joblib.load(model_path)
-        logger.info("Loaded successfully...")
-    except Exception as e:
-        error = str(e)
-        return error
+#     try:
+#         model = joblib.load(model_path)
+#         logger.info("Loaded successfully...")
+#     except Exception as e:
+#         error = str(e)
+#         return error
      
 def run(data):
     try:      
