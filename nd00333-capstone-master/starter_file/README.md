@@ -76,23 +76,37 @@ The best model has resulted from the AutoML experiment from VotingEnsemble model
 #### Best model run id screenshot
 
 ### How to improve the result:
-- Interchange n_cross_validations value between (1 till 7) and see if the prediction accuracy improved by tuning this parameter. 
+- Interchange n_cross_validations value between (2 till 7) and see if the prediction accuracy improved by tuning this parameter. 
 - Increase the number of iterations this could lead to more improved results by testing more machine learning algorithms and run the experiment using them. 
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+I have chosen a LogisticRegression classifier model to train the HyperDrive experiment. Since our target is to predict classification problem result either 0 or 1. The model uses the probability of a certain class to occur. Logistic regression uses a logistic model function which is a form of binary regression. The model is trained using 'train.py' script. 
 
+The used HyperDrive parameters: 
+- Parameter sampler 'RandomParameterSampling' holds the tuning hyperparameters (--C: Inverse of regularization, --max_iter: Maximum number of iterations) was passed to the HyperDriveConfig script.
+  - Discrete values with 'choice' have been used for both tuned parameters '--C' : choice(0.001,0.01,0.1,1.0,10.0,50.0,100,1000),
+        '--max_iter': choice(10,50). RandomParameterSampling has been selected due to its fast performance, simple approach, and would provide random unbiased search in the overall population. In addition, it gives satisfactory results and supports the early termination policy of low-performance runs which results in saving resources. Grid Sampling can be used for exhaustive search over the search space if the budget was not an issue.
+- Early termination policy has been added to the script then experiment submission.
+  - BanditPolicy has been used with the parameters evaluation_interval=2 and slack_factor=0.1 as an early stopping policy to improve the performance of the computational resources by automatically terminating poorly and delayed performing runs. Bandit Policy ends runs if the primary metric is not within the specified slack factor/amount when compared with the highest performing run.
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The best performing model has a 75% accuracy rate with --C = 0.01 and --max_iter = 50. 
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+#### `RunDetails` widget screenshot of the best model
+
+#### Best model run id screenshot
+
+### How to improve the result:
+- Try a uniform range between 1 and 5 for regularisation (--C) to see the overall improvement in the performance and generalization capability.
+- Increase the number of --max_iter to cover 100 and 150 and evaluate the impact of tuning the iterations on the model performance.
+- Try Median stopping, and Truncation selection early termination policies. Median stopping terminates runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs.
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+A link to a screen recording of the project is Here!
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
@@ -110,3 +124,4 @@ The best model has resulted from the AutoML experiment from VotingEnsemble model
 - https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-entry-script
 - https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights
 - https://docs.microsoft.com/en-us/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py
+- https://en.wikipedia.org/wiki/Logistic_regression
