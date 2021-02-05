@@ -79,7 +79,7 @@ Overview of the `automl` settings and configuration used for this experiment:
 - debug_log: errors will be logged into 'automl_errors.log'. 
 
 ### Results
-The best model has resulted from the AutoML experiment from VotingEnsemble model. The Voting Ensemble model takes a majority vote of several algorithms which makes it surpass individual algorithms and minimize the bias. The best model has a 78.7% accuracy rate. 
+The best model has resulted from the AutoML experiment from VotingEnsemble model. The Voting Ensemble model takes a majority vote of several algorithms which makes it surpass individual algorithms and minimize the bias. The best model has a 78.39% accuracy rate. 
 
 #### `RunDetails` widget of best model screenshot 
 
@@ -101,7 +101,7 @@ The used HyperDrive parameters:
   - BanditPolicy has been used with the parameters evaluation_interval=2 and slack_factor=0.1 as an early stopping policy to improve the performance of the computational resources by automatically terminating poorly and delayed performing runs. Bandit Policy ends runs if the primary metric is not within the specified slack factor/amount when compared with the highest performing run.
 
 ### Results
-The best performing model has a 75% accuracy rate with --C = 0.01 and --max_iter = 50. 
+The best performing model has a 74.4% accuracy rate with --C = 50 and --max_iter = 50. 
 
 #### `RunDetails` widget screenshot of the best model
 
@@ -113,7 +113,7 @@ The best performing model has a 75% accuracy rate with --C = 0.01 and --max_iter
 - Try Median stopping, and Truncation selection early termination policies. Median stopping terminates runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs.
 
 ## Model Deployment
-The AutoML experiment has a 78.7% accuracy while the HyperDrive experiment gave a 75%. The AutoML model exceeded the HyperDrive performance by 2%, Hence was registered as the best model and deployed as a web service.
+The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave a 74.4%. The AutoML model exceeded the HyperDrive performance by 3.99%, Hence was registered as the best model and deployed as a web service.
 
 #### Best Model screenshot
 
