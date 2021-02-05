@@ -53,12 +53,31 @@ The dataset has nine features as follow:
 The data is registered in the AzureML workspace as a dataset with the name 'diabetes_data_set'. Then, used in both notebooks using Python SDK.
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+Overview of the `automl` settings and configuration used for this experiment:
+
+- "experiment_timeout_minutes": set to 30 minutes. The experiment will timeout after that period to avoid wasting resources.
+- "max_concurrent_iterations": is set to 4. The max number of concurrent iterations to be run in parallel at the same time.
+- "primary_metric" :  is set to 'accuracy', which is a sutible metric for classification problems. 
+- "n_cross_validations": is set to 5, therefore the training and validation sets will be divided into five equal sets.
+- "iterations": the number of iterations for the experiment is set to 20. It's a reasonable number and would provide the intendable result for the given dataset.
+- compute_target: set to the project cluster to run the experiment.
+- task: set to 'classification' since our target to predict whether the patient has diabetes or not.
+- training_data: the loaded dataset for the project.
+- label_column_name: set to the result/target colunm in the dataset 'Outcome' (0 or 1).
+- enable_early_stopping: is enabled to terminate the experiment if the accuracy score is not showing improvement over time.
+- featurization = is set to 'auto', it's an indicator of whether implementing a featurization step to preprocess/clean the dataset automatically or not. In our case, the preprocessing was applied for the numerical columns which normally involve treating missing values, cluster distance, the weight of evidence...etc.
+- debug_log: errors will be logged into 'automl_errors.log'. 
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The best model has resulted from the AutoML experiment from VotingEnsemble model. The Voting Ensemble model takes a majority vote of several algorithms which makes it surpass individual algorithms and minimize the bias. The best model has a 78.7% accuracy rate. 
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+#### `RunDetails` widget of best model screenshot 
+
+#### Best model run id screenshot
+
+### How to improve the result:
+- Interchange n_cross_validations value between (1 till 7) and see if the prediction accuracy improved by tuning this parameter. 
+- Increase the number of iterations this could lead to more improved results by testing more machine learning algorithms and run the experiment using them. 
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
@@ -90,4 +109,4 @@ The data is registered in the AzureML workspace as a dataset with the name 'diab
 - https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments
 - https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-entry-script
 - https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights
-
+- https://docs.microsoft.com/en-us/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py
