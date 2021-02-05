@@ -61,6 +61,7 @@ The dataset has nine features as follow:
 
 ### Access
 The data is registered in the AzureML workspace as a dataset with the name 'diabetes_data_set'. Then, used in both notebooks using Python SDK.
+![](Screenshots/registerd-dataset.png)
 
 ## Automated ML
 Overview of the `automl` settings and configuration used for this experiment:
@@ -81,10 +82,15 @@ Overview of the `automl` settings and configuration used for this experiment:
 ### Results
 The best model has resulted from the AutoML experiment from VotingEnsemble model. The Voting Ensemble model takes a majority vote of several algorithms which makes it surpass individual algorithms and minimize the bias. The best model has a 78.39% accuracy rate. 
 
+![](Screenshots/automl-models.png)
+
 #### `RunDetails` widget of best model screenshot 
-![](Screenshots/pip-endpoint-detl.png)
+![](Screenshots/automl_run_dtl_p1.png)
+
+![](Screenshots/automl-matix.png)
 
 #### Best model run id screenshot
+![](Screenshots/automl-registered-model.png)
 
 ### How to improve the result:
 - Interchange n_cross_validations value between (2 till 7) and see if the prediction accuracy improved by tuning this parameter. 
@@ -105,8 +111,17 @@ The used HyperDrive parameters:
 The best performing model has a 74.4% accuracy rate with --C = 50 and --max_iter = 50. 
 
 #### `RunDetails` widget screenshot of the best model
+![](Screenshots/hd_run_dtl_p1.png)
+
+![](Screenshots/hd_run_dtl_p2.png)
+
+![](Screenshots/hd_run_dtl_p3.png)
+
+![](Screenshots/hd_run_dtl_p4.png)
 
 #### Best model run id screenshot
+![](Screenshots/hd-best-run-id.png)
+
 
 ### How to improve the result:
 - Try a uniform range between 1 and 5 for regularisation (--C) to see the overall improvement in the performance and generalization capability.
@@ -114,16 +129,28 @@ The best performing model has a 74.4% accuracy rate with --C = 50 and --max_iter
 - Try Median stopping, and Truncation selection early termination policies. Median stopping terminates runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs.
 
 ## Model Deployment
-The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave a 74.4%. The AutoML model exceeded the HyperDrive performance by 3.99%, Hence was registered as the best model and deployed as a web service.
+The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave a 74.4%. The AutoML model exceeded the HyperDrive performance by 3.99%, Hence was registered as the best model and deployed as a web service. The application insights was enabled.
 
 #### Best Model screenshot
+![](Screenshots/automl-run-detl-p1.png)
+
+![](Screenshots/automl-run-detl-p2.png)
+
+![](Screenshots/deployed-model.png)
+
+![](Screenshots/deployed-model-healthy.png)
+
+![](Screenshots/deployed-enable-insights.png)
 
 A two sets of test records were passed to the endpoint to predict the result and use the service. The test data payload was passed to an instance of the endpoint model named "service". The prediction result was [1, 0] which indicates that only the first patient has diabetes. 
 
 #### Endpoint Result
+![](Screenshots/input-json-payload.png)
+
+![](Screenshots/json-response.png)
 
 The endpoint result can be run by 'endpoint.py' script. The script can be executed using 'python endpoint.py' command to receive the prediction. 
-
+![](Screenshots/endpoint-py.png)
 
 ## Screen Recording
 A link to a screen recording of the project is [Click Here](https://www.loom.com/share/431c6a9c7ef64fc5927f4b9248c9e6cb)
