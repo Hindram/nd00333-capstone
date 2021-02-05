@@ -38,7 +38,7 @@ with open("data.json", "w") as _f:
 # Set the content type
 headers = {'Content-Type': 'application/json'}
 # If authentication is enabled, set the authorization header
-headers['Authorization'] = f'Bearer {key}'
+#headers['Authorization'] = f'Bearer {key}'
 
 # Make the request and display the response
 resp = requests.post(scoring_uri, input_data, headers=headers)
