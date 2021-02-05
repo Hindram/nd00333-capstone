@@ -80,7 +80,7 @@ The best model has resulted from the AutoML experiment from VotingEnsemble model
 - Increase the number of iterations this could lead to more improved results by testing more machine learning algorithms and run the experiment using them. 
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+
 I have chosen a LogisticRegression classifier model to train the HyperDrive experiment. Since our target is to predict classification problem result either 0 or 1. The model uses the probability of a certain class to occur. Logistic regression uses a logistic model function which is a form of binary regression. The model is trained using 'train.py' script. 
 
 The used HyperDrive parameters: 
@@ -103,7 +103,16 @@ The best performing model has a 75% accuracy rate with --C = 0.01 and --max_iter
 - Try Median stopping, and Truncation selection early termination policies. Median stopping terminates runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+The AutoML experiment has a 78.7% accuracy while the HyperDrive experiment gave a 75%. The AutoML model exceeded the HyperDrive performance by 2%, Hence was registered as the best model and deployed as a web service.
+
+#### Best Model screenshot
+
+A two sets of test records were passed to the endpoint to predict the result and use the service. The test data payload was passed to an instance of the endpoint model named "service". The prediction result was [1, 0] which indicates that only the first patient has diabetes. 
+
+#### Endpoint Result
+
+The endpoint result can be run by 'endpoint.py' script. The script can be executed using 'python endpoint.py' command to receive the prediction. 
+
 
 ## Screen Recording
 A link to a screen recording of the project is Here!
