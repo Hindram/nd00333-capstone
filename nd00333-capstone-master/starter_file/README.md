@@ -82,6 +82,7 @@ Overview of the `automl` settings and configuration used for this experiment:
 The best model has resulted from the AutoML experiment from VotingEnsemble model. The Voting Ensemble model takes a majority vote of several algorithms which makes it surpass individual algorithms and minimize the bias. The best model has a 78.39% accuracy rate. 
 
 #### `RunDetails` widget of best model screenshot 
+![](Screenshots/pip-endpoint-detl.png)
 
 #### Best model run id screenshot
 
@@ -125,7 +126,7 @@ The endpoint result can be run by 'endpoint.py' script. The script can be execut
 
 
 ## Screen Recording
-A link to a screen recording of the project is Here!
+A link to a screen recording of the project is [Click Here](https://www.loom.com/share/431c6a9c7ef64fc5927f4b9248c9e6cb)
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
