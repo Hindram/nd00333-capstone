@@ -1,6 +1,16 @@
 
 # Capstone Project: Diabetes prediction
 
+## Table of content
+* [Overview](#overview)
+* [Project Set Up and Installation](#project-set-up-and-installation)
+* [Dataset](#dataset)
+* [Automated ML](#automated-ml)
+* [Hyperparameter Tuning](#hyperparameter-tuning)
+* [Screen Recording](#screen-recording)
+* [References](#references)
+
+## Overview
 The used dataset originally has been taken from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective of the project is to predict if a patient has diabetes or not by evaluating certain diagnostic measurements. 
 
 ## Project Set Up and Installation
