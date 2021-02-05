@@ -36,7 +36,7 @@ The dataset collects the records of females patients of age 21 and older from Pi
 https://www.kaggle.com/mathchi/diabetes-data-set
 
 ### Task
-Predict the "Outcome" column based on the input features, either the patent has diabetes or not. 
+Predict the "Outcome" column based on the input features, either the patient has diabetes or not. 
 
 The dataset has nine features as follow:
 - Pregnancies: Number pregnancy times (int).
@@ -47,7 +47,7 @@ The dataset has nine features as follow:
 - BMI: Body mass index (float).
 - DiabetesPedigreeFunction: Diabetes pedigree function(float).
 - Age: age in years 21 and above(int).
-- Outcome: Target column 0 or 1 (int)
+- Outcome: Target column 0 or 1, 0 = Not diabetes, 1 = diabetes(int).
 
 ### Access
 The data is registered in the AzureML workspace as a dataset with the name 'diabetes_data_set'. Then, used in both notebooks using Python SDK.
