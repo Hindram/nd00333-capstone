@@ -96,7 +96,7 @@ The best model has resulted from the AutoML experiment from VotingEnsemble model
 #### Best model run id screenshot
 ![](Screenshots/automl-registered-model.png)
 
-### How to improve the result:
+### How to improve the project in the future:
 - Interchange n_cross_validations value between (2 till 7) and see if the prediction accuracy improved by tuning this parameter. 
 - Increase the number of iterations this could lead to more improved results by testing more machine learning algorithms and run the experiment using them. 
 
@@ -127,13 +127,30 @@ The best performing model has a 74.4% accuracy rate with --C = 50 and --max_iter
 ![](Screenshots/hd-best-run-id.png)
 
 
-### How to improve the result:
+### How to improve the project in the future:
 - Try a uniform range between 1 and 5 for regularisation (--C) to see the overall improvement in the performance and generalization capability.
 - Increase the number of --max_iter to cover 100 and 150 and evaluate the impact of tuning the iterations on the model performance.
 - Try Median stopping, and Truncation selection early termination policies. Median stopping terminates runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs.
 
 ## Model Deployment
 The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave a 74.4%. The AutoML model exceeded the HyperDrive performance by 3.99%, Hence was registered as the best model and deployed as a web service. The application insights was enabled.
+
+Also, we have created inference configuration and edited deploy configuration settings for the deployment. The inference configuration and settings explain the set up of the web service that will include the deployed model. Environment settings and scoring.py script file should be passed the InferenceConfig. The deployed model was configured in Azure Container Instance(ACI) with cpu_cores and memory_gb parameters initialized as 1. 
+
+```inference_config = InferenceConfig(entry_script='scoring.py',
+                                   environment=environment)
+service_name = 'automl-deploy-1'
+deployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+
+service = Model.deploy(workspace=ws,
+                       name=service_name,
+                       models=[model],
+                       inference_config=inference_config,
+                       deployment_config=deployment_config,
+                       overwrite=True
+                      )
+service.wait_for_deployment(show_output=True)
+```
 
 #### Best Model screenshot
 ![](Screenshots/automl-run-detl-p1.png)
@@ -148,6 +165,36 @@ The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave
 
 A two sets of test records were passed to the endpoint to predict the result and use the service. The test data payload was passed to an instance of the endpoint model named "service". The prediction result was [1, 0] which indicates that only the first patient has diabetes. 
 
+```
+data = [{
+           "Pregnancies": 6, 
+             "Glucose": 148, 
+             "BloodPressure": 72, 
+             "SkinThickness": 35, 
+             "Insulin": 0, 
+             "BMI": 33.5, 
+             "DiabetesPedigreeFunction": 0.627, 
+             "Age": 50
+           },
+          {
+            "Pregnancies": 1, 
+             "Glucose": 85, 
+             "BloodPressure": 66, 
+             "SkinThickness": 29, 
+             "Insulin": 20, 
+             "BMI": 26.5, 
+             "DiabetesPedigreeFunction": 0.351, 
+             "Age": 31
+          },
+      ]
+      # test using service instance
+      input_data = json.dumps({
+          'data': data
+      })
+
+      output = service.run(input_data)
+      print(output)
+```
 #### Endpoint Result
 ![](Screenshots/input-json-payload.png)
 
