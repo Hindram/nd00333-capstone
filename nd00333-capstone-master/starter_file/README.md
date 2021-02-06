@@ -130,6 +130,7 @@ The best performing model has a 74.4% accuracy rate with --C = 50 and --max_iter
 ### How to improve the project in the future:
 - Try a uniform range between 1 and 5 for regularisation (--C) to see the overall improvement in the performance and generalization capability.
 - Increase the number of --max_iter to cover 100 and 150 and evaluate the impact of tuning the iterations on the model performance.
+- Consider using XGBoost, and LightGBM models for the experiment and explore more Hyper Parameters options to tune.
 - Try Median stopping, and Truncation selection early termination policies. Median stopping terminates runs based on the running averages of primary metrics. Thus, computing all training runs averages and eliminate the worse runs.
 
 ## Model Deployment
@@ -224,3 +225,7 @@ A link to a screen recording of the project is [Click Here](https://www.loom.com
 - https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights
 - https://docs.microsoft.com/en-us/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py
 - https://en.wikipedia.org/wiki/Logistic_regression
+- https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
+- https://docs.microsoft.com/en-us/azure/machine-learning/concept-ml-pipelines
+- https://docs.microsoft.com/en-us/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py
+- https://medium.com/microsoftazure/9-advanced-tips-for-production-machine-learning-6bbdebf49a6f
