@@ -137,7 +137,8 @@ The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave
 
 Also, we have created inference configuration and edited deploy configuration settings for the deployment. The inference configuration and settings explain the set up of the web service that will include the deployed model. Environment settings and scoring.py script file should be passed the InferenceConfig. The deployed model was configured in Azure Container Instance(ACI) with cpu_cores and memory_gb parameters initialized as 1. 
 
-```inference_config = InferenceConfig(entry_script='scoring.py',
+```
+inference_config = InferenceConfig(entry_script='scoring.py',
                                    environment=environment)
 service_name = 'automl-deploy-1'
 deployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
@@ -187,13 +188,13 @@ data = [{
              "Age": 31
           },
       ]
-      # test using service instance
-      input_data = json.dumps({
-          'data': data
-      })
+  # test using service instance
+  input_data = json.dumps({
+  'data': data
+   })
 
-      output = service.run(input_data)
-      print(output)
+   output = service.run(input_data)
+   print(output)
 ```
 #### Endpoint Result
 ![](Screenshots/input-json-payload.png)
