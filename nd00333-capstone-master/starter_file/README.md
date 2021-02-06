@@ -11,7 +11,10 @@
 * [References](#references)
 
 ## Overview
-The used dataset originally has been taken from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective of the project is to predict if a patient has diabetes or not by evaluating certain diagnostic measurements. 
+The used dataset originally has been taken from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective of the project is to predict if a patient has diabetes or not by evaluating certain diagnostic measurements. In this project, we have created two models: one using AutoML and one using hyperparameters tuned using HyperDrive model with LogisticRegression classifier. Then, we compared the performance of both the models and deploy the best performing model and consume it.
+
+The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave a 74.4%. The AutoML model exceeded the HyperDrive performance by 3.99%, Hence was registered as the best model and deployed as a web service. 
+
 
 ## Project Set Up and Installation
 
@@ -60,7 +63,8 @@ The dataset has nine features as follow:
 - Outcome: Target column 0 or 1, 0 = Not diabetes, 1 = diabetes(int).
 
 ### Access
-The data is registered in the AzureML workspace as a dataset with the name 'diabetes_data_set'. Then, used in both notebooks using Python SDK.
+The dataset was downloaded from kaggle then uploaded/registered in the workspace through 'upload from local file' option in the ML Studio GUI Datasets tab. The dataset was registered with the name 'diabetes_data_set' and could be accessed via 'Dataset_get_by_name(ws,dataset_name)' command. It was consumed by both notebooks using Python SDK.
+
 ![](Screenshots/registerd-dataset.png)
 
 ## Automated ML
