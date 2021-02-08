@@ -13,6 +13,9 @@
 ## Overview
 The used dataset originally has been taken from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective of the project is to predict if a patient has diabetes or not by evaluating certain diagnostic measurements. In this project, we have created two models: one using AutoML and one using hyperparameters tuned using HyperDrive model with LogisticRegression classifier. Then, we compared the performance of both the models and deploy the best performing model and consume it.
 
+![](Screenshots/steps.png)
+###### Source: (https://medium.com/microsoftazure/9-advanced-tips-for-production-machine-learning-6bbdebf49a6f)
+
 The AutoML experiment has a 78.39% accuracy while the HyperDrive experiment gave a 74.4%. The AutoML model exceeded the HyperDrive performance by 3.99%, Hence was registered as the best model and deployed as a web service. 
 
 
