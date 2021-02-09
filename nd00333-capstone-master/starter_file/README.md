@@ -60,7 +60,7 @@ The dataset has nine features as follow:
 - BloodPressure: Diastolic blood pressure level in mm Hg(int).
 - SkinThickness: skinfold thickness in mm(int).
 - Insulin: two-hour serum insulin measured by mu U/ml(int).
-- BMI: Body mass index (float).
+- BMI: Body mass index(float).
 - DiabetesPedigreeFunction: Diabetes pedigree function(float).
 - Age: age in years 21 and above(int).
 - Outcome: Target column 0 or 1, 0 = Not diabetes, 1 = diabetes(int).
