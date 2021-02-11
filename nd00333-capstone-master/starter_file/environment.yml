@@ -5,6 +5,7 @@ dependencies:
 - numpy
 - pip:
   - azureml-defaults
+
 channels:
 - azureml-sdk
 - anaconda
